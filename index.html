@@ -31,47 +31,64 @@
 
         <div class="summary__scores">
           <ul class="box">
-            <li>
-              <div class="summary_list">
-                <span class="summary__icons">
-                  <!-- <img src="${key.icon}" alt="${key.category}"> -->
-                </span>
-              </div>
-            </li>
+            
           </ul>
         </div>
+        <button class="summary__btn">Continue</button>
       </div>
     </section>
   </main>
 
-  <!-- Your Result
-  76
-  of 100
-
-  Great
-  You scored higher than 65% of the people who have taken these tests.
-  
-  Summary
-
-  Reaction
-  80 / 100
-
-  Memory
-  92 / 100
-
-  Verbal
-  61 / 100
-
-  Visual
-  72 / 100
-
-  Continue -->
-  
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/iEarlG/results-summary-component" target="_blank">Earl Villapaz</a>.
   </footer>
+  
+  <script>
+    const data = [
+    {
+        category: "Reaction",
+        score: 80,
+        icon: "./assets/images/icon-reaction.svg",
+    },
+    {
+        category: "Memory",
+        score: 92,
+        icon: "./assets/images/icon-memory.svg",
+    },
+    {
+        category: "Verbal",
+        score: 61,
+        icon: "./assets/images/icon-verbal.svg",
+    },
+    {
+        category: "Visual",
+        score: 72,
+        icon: "./assets/images/icon-visual.svg",
+    }
+];
+    data.forEach((datas, i) => {
+      console.log(datas);
+    });
 
-  <script src="./script/data.js"></script>
+    const box = document.querySelector(".box");
+      data.forEach((key, i) => { 
+        box.innerHTML += `
+          <li class="key${i}">
+            <div class="summary__list">
+              <span class="summary__icons">
+                <img src="${key.icon}" alt="${key.category}">
+              </span>
+              <h3 class="${key.category}">${key.category}</h3>
+            </div>
+              <!-- right here --!>
+            <div class="summary__list-scores">
+              <span class="summary__score">${key.score}</span>
+              <span class="summary__total-score">/ 100</span>
+            </div>
+          </li>
+        `;
+      })
+  </script>
 </body>
 </html>
